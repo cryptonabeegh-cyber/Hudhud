@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hudhud — Names of Allah</title>
+  <meta name="description" content="Describe what you are going through and find the Names of Allah to call upon in your dua.">
+  <meta name="theme-color" content="#0f5c4a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Hudhud">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="topbar">
+      <span class="brand" data-i18n="brand">Hudhud</span>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en">English</button>
+        <button type="button" data-lang="ur" class="ur-font">اردو</button>
+      </div>
+    </div>
+    <p class="hero-arabic" lang="ar" dir="rtl">وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَىٰ فَادْعُوهُ بِهَا</p>
+    <p class="hero-verse"><span data-i18n="heroVerse"></span> <a href="https://quran.com/7/180" target="_blank" rel="noopener">7:180</a></p>
+    <h1 data-i18n="title"></h1>
+    <p class="subtitle" data-i18n="subtitle"></p>
+  </header>
+
+  <main>
+    <section class="ask card-surface" aria-labelledby="ask-label">
+      <label id="ask-label" for="problem" data-i18n="askLabel"></label>
+      <textarea id="problem" rows="4" data-i18n-placeholder="placeholder"></textarea>
+      <p class="hint" data-i18n="hint"></p>
+      <div class="ask-actions">
+        <button type="button" id="find" class="primary" data-i18n="find"></button>
+        <button type="button" id="clear" class="ghost" data-i18n="clear"></button>
+      </div>
+      <div class="examples">
+        <span data-i18n="tryLabel"></span>
+        <div id="examples" class="chips"></div>
+      </div>
+    </section>
+
+    <section id="results" class="results" aria-live="polite" hidden>
+      <div id="crisis" class="crisis" hidden></div>
+      <h2 data-i18n="resultsTitle"></h2>
+      <p id="understood" class="understood"></p>
+      <div id="note"></div>
+      <div id="result-list" class="name-list"></div>
+    </section>
+
+    <section class="situations" aria-labelledby="sit-title">
+      <h2 id="sit-title" data-i18n="situationsTitle"></h2>
+      <div id="theme-chips" class="chips"></div>
+    </section>
+
+    <section class="all-names" aria-labelledby="all-title">
+      <div class="all-head">
+        <h2 id="all-title" data-i18n="allTitle"></h2>
+        <input id="filter" type="search" data-i18n-placeholder="filterPlaceholder">
+      </div>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="hadith" data-i18n="hadith"></p>
+    <p class="disclaimer" data-i18n="disclaimer"></p>
+  </footer>
+
+  <dialog id="detail">
+    <button type="button" class="close" id="detail-close" aria-label="Close">×</button>
+    <div id="detail-body"></div>
+  </dialog>
+
+  <script src="js/names.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    }
+  </script>
+</body>
+</html>
